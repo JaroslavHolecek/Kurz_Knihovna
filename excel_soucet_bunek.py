@@ -6,12 +6,15 @@ vsechny_soubory = ["Spol1.xlsx", "Spol2.xlsx", "Spol3.xlsx", "Spol4.xlsx", "Spol
 
 pocet_radku = 5
 pocet_sloupecku = 4
+
 vysledky = pomocne_funkce.tabulka_vysledku(radku=pocet_radku, sloupcu=pocet_sloupecku)
 
 # soucet bunek
 for soubor_nazev in vsechny_soubory:
     excel_soubor = openpyxl.load_workbook(soubor_nazev, data_only=True)  # otevření/načtení souboru
-    aktivni_list = excel_soubor.active  # výběr aktivního listu
+    aktivni_list = excel_soubor['Hmotny_majetek']  # výběr aktivního listu
+
+
 
     for radek in range(pocet_radku):
         for sloupec in range(pocet_sloupecku):

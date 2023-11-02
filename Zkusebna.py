@@ -1,21 +1,28 @@
 class Auto:
-    def __init__(self):
-        self.barva = "cervena"
-        self.pozice = 0
-        self.rychlost = 10
+    def __init__(self, bar, poz, rych):
+        self.barva = bar
+        self.pozice = poz
+        self.rychlost = rych
 
     def __str__(self):
         return f"p: {self.pozice} r: {self.rychlost} {self.barva}"
-    def popojed(self):
-        self.pozice = self.pozice + self.rychlost
+    def popojed(self, kolikrat):
+        self.pozice = self.pozice + (self.rychlost * kolikrat)
 
-trabant = Auto()
-skoda = Auto()
+    def srazka(self, druhe_auto):
+        self.barva = "oprýskaná"
+        druhe_auto.pozice += 50
+
+trabant = Auto("modrá", 0, 10)
+skoda = Auto("červená", 100, 50)
 print(skoda)
 print(trabant)
-trabant.popojed()
-print(skoda)
+trabant.popojed(3)
+trabant.srazka(skoda)
 print(trabant)
+print(skoda)
+
+
 
 
 

@@ -1,0 +1,4 @@
+Příjem:100.0
+Náklady:20.0
+Daň k platbě:12.0
+Zisk po zdanění:68.0
