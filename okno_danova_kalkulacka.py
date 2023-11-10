@@ -6,7 +6,8 @@ app = QtWidgets.QApplication([]) # inicializace aplikace
 hlavni_okno = QtWidgets.QWidget()  # vytvoření objektu hlavního okna
 hlavni_okno.setWindowTitle("Daňová kalkulačka")  # název okna
 
-svisle_1 = QtWidgets.QVBoxLayout() # vytvoření Layout managera typu "vedle sebe"
+
+svisle_1 = QtWidgets.QVBoxLayout() # vytvoření Layout managera typu "pod sebou"
 
 usporadani = QtWidgets.QHBoxLayout() # vytvoření Layout managera typu "vedle sebe"
 hlavni_okno.setLayout(usporadani) # nastavení Layout managera našemu hlavnímu oknu
