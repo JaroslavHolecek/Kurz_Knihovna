@@ -33,6 +33,10 @@ vstup_naklady = QtWidgets.QLineEdit()
 vstup_naklady.setValidator(validator_celych_cisel)
 usporadani.addWidget(vstup_naklady)
 
+vstup_prijemce = QtWidgets.QLineEdit()
+usporadani.addWidget(vstup_prijemce)
+
+
 napis_dan = QtWidgets.QLabel('')  # vytvoření objektu pro zobrazení textu
 usporadani.addWidget(napis_dan)
 
@@ -43,7 +47,28 @@ def spocitej_dan():
     zisk = hruby_prijem - naklady
     dan = zisk * 0.15
 
+    prijemce = vstup_prijemce.text()
+
     napis_dan.setText(f"Daň k zaplacení: {dan}")
+    with open("faktura.tex", "w") as soubor:
+        soubor.write("""
+\documentclass{article}
+\\usepackage[czech]{babel}
+\\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\\title{Faktura}
+\\author{Jaroslav Holeček}
+\date{\\today}
+
+\\begin{document}
+\maketitle
+
+\section{Příjemce}
+
+Příjemce je""" + prijemce + """ a má zaplatit """ + str(dan) + """
+
+\end{document}
+        """)
 
 tlacitko.clicked.connect(spocitej_dan)
 
